@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829184054) do
+ActiveRecord::Schema.define(version: 20160829201036) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.integer  "patient_id"
+    t.date     "appointment_date"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "article_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -52,6 +60,32 @@ ActiveRecord::Schema.define(version: 20160829184054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "doctors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "happening"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "host_id"
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredient_recipes", force: :cascade do |t|
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
@@ -76,11 +110,24 @@ ActiveRecord::Schema.define(version: 20160829184054) do
     t.integer  "customer_id"
   end
 
+  create_table "patients", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
