@@ -1,0 +1,2 @@
+class RepositoryCoder < ApplicationRecord
+end

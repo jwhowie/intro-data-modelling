@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829201036) do
+ActiveRecord::Schema.define(version: 20160830003919) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20160829201036) do
     t.string   "location"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "coders", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -123,9 +129,36 @@ ActiveRecord::Schema.define(version: 20160829201036) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "repositories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "coder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "repository_coders", force: :cascade do |t|
+    t.integer  "repository_id"
+    t.integer  "coder_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "rsvps", force: :cascade do |t|
     t.integer  "guest_id"
     t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweeters", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer  "tweeter_id"
+    t.string   "tweet_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
