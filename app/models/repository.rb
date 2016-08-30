@@ -1,5 +1,9 @@
 class Repository < ApplicationRecord
-  has_one :coder as: :owner
+  belongs_to :coder
   has_many :repository_coders
+  has_many :coders, through: :repository_coders
+
+  alias_attribute  :owner, :coder
+
 
 end

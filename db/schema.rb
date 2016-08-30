@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830003919) do
+ActiveRecord::Schema.define(version: 20160830004753) do
+
+  create_table "actors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "actors_films", force: :cascade do |t|
+    t.integer  "actor_id"
+    t.integer  "film_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "doctor_id"
@@ -66,6 +79,12 @@ ActiveRecord::Schema.define(version: 20160830003919) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "directors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -78,6 +97,13 @@ ActiveRecord::Schema.define(version: 20160830003919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "host_id"
+  end
+
+  create_table "films", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "director_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "guests", force: :cascade do |t|
